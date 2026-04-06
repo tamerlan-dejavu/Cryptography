@@ -5,7 +5,8 @@ import java.util.Scanner;
 public class PartOne {
 
     static char[] shift(char[] text, int k) {
-        k = ((k % 26) + 26) % 26;
+        k = k % 26;
+        if (k < 0) k = k + 26;
         char[] result = new char[text.length];
         
         for (int i = 0; i < text.length; i++) {
@@ -25,7 +26,7 @@ public class PartOne {
         char[] result = new char[text.length];
         for (int i = 0; i < text.length; i++) {
             result[i] = (char)(text[i] + k);
-        }
+        }   
         return result;
     }
 

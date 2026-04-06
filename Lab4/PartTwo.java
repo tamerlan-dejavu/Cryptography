@@ -15,6 +15,11 @@ public class PartTwo {
     }
 
     static char[] expandKey(char[] text, char[] key) {
+    if (!isValidKeyword(key)) {
+        System.out.println("Error: keyword must contain only letters.");
+        return null;
+    }
+
         char[] expanded = new char[text.length];
         int keyIndex = 0;
         for (int i = 0; i < text.length; i++) {
@@ -88,12 +93,6 @@ public class PartTwo {
 
         System.out.print("Key: ");
         char[] key = readLine(scanner);
-
-        if (!isValidKeyword(key)) {
-            System.out.println("Error: keyword must contain only letters.");
-            scanner.close();
-            return;
-        }
 
         char[] expandedKey = expandKey(text, key);
         char[] encrypted = encrypt(text, expandedKey);
